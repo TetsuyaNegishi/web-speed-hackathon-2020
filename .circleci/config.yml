@@ -1,10 +1,14 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
+
 jobs:
   build:
     docker:
-      - image: circleci/node:15.12-browsers
+      - image: cimg/node:16.13.2-browsers
     working_directory: ~/your-project
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - run: yarn install
       - run: yarn build
