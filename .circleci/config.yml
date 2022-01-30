@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:15.12-browsers
+    working_directory: ~/your-project
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn build
+      - run: sudo npm install -g @lhci/cli@0.8.x
+      - run: lhci autorun
